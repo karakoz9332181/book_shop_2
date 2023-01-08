@@ -1,0 +1,23 @@
+.profile__btn {
+  all: unset;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  content: " ";
+  display: inline-block;
+  vertical-align: text-bottom;
+
+  &__user {
+    @extend .profile__btn;
+    background-image: url("../static/img/svg/user.svg");
+  }
+  &__search {
+    @extend .profile__btn;
+    background-image: url("../static/img/svg/search.svg");
+  }
+  &__basket {
+    @extend .profile__btn;
+    background-image: url("../static/img/svg/shop\ bag.svg");
+  }
+}
