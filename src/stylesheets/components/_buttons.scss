@@ -17,10 +17,15 @@
   }
 
   &__primary:disabled {
-    @extend .btn;
     border-color: $disabled;
     color: $disabled-text;
     transform: none;
     cursor: not-allowed;
+  }
+
+  &__secondary {
+    @extend .btn;
+    border-color: $disabled;
+    color: $disabled-text;
   }
 }

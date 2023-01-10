@@ -1,10 +1,12 @@
 import { Book, BookType } from "./models/book";
+import Cart from "./models/cart";
+
 
 type ApiItems = {
   items: Array<BookType>;
 };
 
-function bookListRender(data: ApiItems, bookList: HTMLElement) {
+function bookListRender(data: ApiItems, bookList: HTMLElement, cart: Cart) {
   const items: Array<BookType> | null = data["items"];
   if (items && items.length) {
     const books: Array<Book> = [];
@@ -23,8 +25,9 @@ function bookListRender(data: ApiItems, bookList: HTMLElement) {
           item.volumeInfo.authors,
           item.volumeInfo.averageRating,
           item.volumeInfo.ratingsCount,
+          cart,
           item.saleInfo.listPrice?.amount,
-          item.saleInfo.listPrice?.currencyCode
+          item.saleInfo.listPrice?.currencyCode,
         )
       );
     }

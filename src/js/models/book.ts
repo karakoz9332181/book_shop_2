@@ -1,3 +1,5 @@
+import Cart from "./cart";
+
 class Book {
   // Класс карточки книги
 
@@ -12,6 +14,7 @@ class Book {
   price?: number;
   currency?: string;
   isInCart: boolean = false;
+  cart: Cart;
 
   constructor(
     id: string,
@@ -22,6 +25,7 @@ class Book {
     authors: Array<string> | undefined,
     rating: number | undefined,
     ratingsCount: number | undefined,
+    cart: Cart,
     price: number | undefined,
     currency: string | undefined
   ) {
@@ -32,7 +36,6 @@ class Book {
       this.authors = "";
     }
 
-    console.log(this.authors);
     this.title = title;
     this.description = description ? description : "";
     this.imgSrc = imgSrc;
@@ -43,6 +46,8 @@ class Book {
     }
     this.rating = rating;
     this.ratingsCount = ratingsCount;
+    this.cart = cart;
+    this.isInCart = cart.isInCart(this.id);
   }
 
   public render(): HTMLElement {
@@ -79,15 +84,54 @@ class Book {
                   ? [this.price, this.currency].join(" ")
                   : "NOT FOR SALE"
               }</div>
-              <button class="btn btn__primary" id="book__${this.id}" ${
-      this.saleability || this.isInCart ? "" : "disabled"
-    }>${this.isInCart? "In the cart": "Buy now"}</button>
+              <button class="btn ${
+                this.isInCart ? "btn__secondary" : "btn__primary"
+              }" id="book__${this.id}" ${this.saleability ? "" : "disabled"}>${
+      this.isInCart ? "In the cart" : "Buy now"
+    }</button>
             </div>
           </div>
     `;
+    const addToCartBtn: HTMLButtonElement = <HTMLButtonElement>(
+      bookElement.querySelector(`#book__${this.id}`)
+    );
+
+    this.addToCartClick(addToCartBtn);
+
     return bookElement;
   }
+
+  private addToCartClick(btnElement: HTMLButtonElement): void {
+    btnElement?.addEventListener("click", () => {
+      const rerenderBtn: HTMLButtonElement = <HTMLButtonElement>(
+        document.getElementById(`book__${this.id}`)
+      );
+      if (this.isInCart) {
+        this.removeFromCart();
+        rerenderBtn.classList.replace("btn__secondary", "btn__primary");
+        rerenderBtn.innerText = "Buy now";
+      } else {
+        this.addToCart();
+        rerenderBtn.classList.replace("btn__primary", "btn__secondary");
+        rerenderBtn.innerText = "In the cart";
+      }
+    });
+  }
+
+  private addToCart(): void {
+    if (!this.cart.isInCart(this.id)) {
+      this.cart.add(this.id);
+    }
+    this.isInCart = true;
+  }
+
+  private removeFromCart(): void {
+    this.cart.remove(this.id);
+    this.isInCart = false;
+  }
 }
+
+function addEventListeners(btnElement: HTMLButtonElement): void {}
 
 type BookType = {
   id: string;

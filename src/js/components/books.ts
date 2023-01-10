@@ -1,5 +1,14 @@
 import BookLoader from "../api/api";
 import { bookListRender, getCategory } from "../utils";
+import Cart from "../models/cart";
+
+// Книги в корзине
+const bookIds: Array<string> = JSON.parse(
+  window.localStorage.getItem("cart") ?? "[]"
+);
+
+// Корзина
+const cart = new Cart(bookIds);
 
 // DIV с книгами
 const bookList: HTMLElement = <HTMLElement>document.getElementById("bookList");
@@ -22,15 +31,15 @@ loadMoreBtn.addEventListener("click", () => {
   const startIndex: number = parseInt(
     loadMoreBtn.dataset.startIndex ? loadMoreBtn.dataset.startIndex : "0"
   );
-  
+
   loader.setParams(getCategory(sidebar), startIndex, 6);
   loader.getBooks().then((data) => {
-    bookListRender(data, bookList);
+    bookListRender(data, bookList, cart);
     loadMoreBtn.dataset.startIndex = (startIndex + 6).toString();
   });
 });
 
 loader.getBooks().then((data) => {
-  bookListRender(data, bookList);
+  bookListRender(data, bookList, cart);
   loadMoreBtn.dataset.startIndex = "6";
 });
