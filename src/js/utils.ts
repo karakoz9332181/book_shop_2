@@ -9,12 +9,16 @@ function bookListRender(data: ApiItems, bookList: HTMLElement) {
   if (items && items.length) {
     const books: Array<Book> = [];
     for (let item of items) {
+      let thumbnail: string = item.volumeInfo.imageLinks
+        ? item.volumeInfo.imageLinks.thumbnail
+        : "https://picsum.photos/220/340";
+
       books.push(
         new Book(
           item.id,
           item.volumeInfo.title,
           item.saleInfo.saleability,
-          item.volumeInfo.imageLinks.thumbnail,
+          thumbnail,
           item.volumeInfo.description,
           item.volumeInfo.authors,
           item.volumeInfo.averageRating,
