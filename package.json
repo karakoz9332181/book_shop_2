@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "start": "webpack serve",
     "prettier-watch": "onchange \"**/*\" --exclude-path .gitignore -- prettier --write --ignore-unknown {{changed}}",
     "build:watch": "webpack --watch"
   },
