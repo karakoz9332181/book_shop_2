@@ -7,6 +7,7 @@ export default class BookLoader {
   startIndex: number;
   maxResults: number;
   public apiUrl: string;
+  public params?: URLSearchParams;
 
   constructor(category: string, startIndex: number, maxResults: number) {
     this.category = category;
@@ -18,7 +19,7 @@ export default class BookLoader {
       maxResults
     );
 
-    this.apiUrl = `https://www.googleapis.com/books/v1/volumes?${params.toString()}`;
+    this.apiUrl = `https://www.googleapis.com/books/v1/volumes?`;
   }
 
   setParams(
@@ -32,11 +33,14 @@ export default class BookLoader {
     params.append("printType", "books");
     params.append("startIndex", startIndex.toString());
     params.append("maxResults", maxResults.toString());
+    this.params = params;
     return params;
   }
 
   async getBooks() {
-    const response = await fetch(this.apiUrl);
+    const response = await fetch(
+      `${this.apiUrl}${this.params ? this.params : ""}`
+    );
     return response.json();
   }
 }
