@@ -6,8 +6,6 @@
   width: 20%;
   position: absolute;
   left: 0px;
-  // grid-area: sidebar;
-  // top: 0px;
 }
 
 .sidebar__links {
@@ -42,5 +40,11 @@
   }
   &__active::before {
     background: #756ad3;
+  }
+}
+
+@media (max-width: 1120px) {
+  .sidebar {
+    width: 40%;
   }
 }

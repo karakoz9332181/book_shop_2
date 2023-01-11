@@ -92,3 +92,10 @@
   margin: 30px auto;
   grid-area: button;
 }
+
+@media (max-width: 1120px) {
+  .book-list {
+    @include flex-col;
+    align-items: center;
+  }
+}
