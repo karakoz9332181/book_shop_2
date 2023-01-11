@@ -3,6 +3,7 @@ import Cart from "../models/cart";
 import { bookListRender } from "../utils";
 
 class Sidebar {
+  // Класс боковой панели
   links: Array<string> = [
     "Architecture",
     "Art & Fashion",
@@ -34,6 +35,7 @@ class Sidebar {
   }
 
   public render(): void {
+    // Отрисовка боковой панели
     const element: HTMLElement = <HTMLElement>(
       document.getElementById("sidebar")
     );
