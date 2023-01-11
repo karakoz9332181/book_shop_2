@@ -20,7 +20,7 @@ class Sidebar {
     "Psychology",
     "Science",
     "Technology",
-    "Travel & Maps",
+    "Travel & Maps"
   ];
 
   active: number = 0;
@@ -43,7 +43,7 @@ class Sidebar {
     const loadMoreBtn: HTMLButtonElement = <HTMLButtonElement>(
       document.getElementById("loadMoreBtn")
     );
-    for (let i = 0; i <= this.links.length; i++) {
+    for (let i = 0; i < this.links.length; i++) {
       const li: HTMLElement = document.createElement("li");
       li.classList.add("sidebar__link");
       li.innerText = this.links[i];

@@ -41,3 +41,9 @@
     background-color: #9e98dc;
   }
 }
+
+@media (max-width: 750px) {
+  .slider {
+    display: none;
+  }
+}

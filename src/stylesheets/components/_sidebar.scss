@@ -46,5 +46,15 @@
 @media (max-width: 1120px) {
   .sidebar {
     width: 40%;
+    padding: 15px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 750px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    align-items: center;
   }
 }

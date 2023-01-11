@@ -99,3 +99,15 @@
     align-items: center;
   }
 }
+
+@media (max-width: 750px) {
+  .books {
+    @include flex-col;
+    gap: 40px;
+  }
+
+  .book {
+    @include flex-col;
+    align-items: center;
+  }
+}
