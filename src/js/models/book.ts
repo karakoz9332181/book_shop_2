@@ -102,6 +102,7 @@ class Book {
   }
 
   private addToCartClick(btnElement: HTMLButtonElement): void {
+    // Действие при клике на кнопку
     btnElement?.addEventListener("click", () => {
       const rerenderBtn: HTMLButtonElement = <HTMLButtonElement>(
         document.getElementById(`book__${this.id}`)
@@ -130,8 +131,6 @@ class Book {
     this.isInCart = false;
   }
 }
-
-function addEventListeners(btnElement: HTMLButtonElement): void {}
 
 type BookType = {
   id: string;

@@ -1,6 +1,7 @@
 import BookLoader from "../api/api";
 import { bookListRender, getCategory } from "../utils";
 import Cart from "../models/cart";
+import Sidebar from "./sidebar";
 
 // Книги в корзине
 const bookIds: Array<string> = JSON.parse(
@@ -43,3 +44,7 @@ loader.getBooks().then((data) => {
   bookListRender(data, bookList, cart);
   loadMoreBtn.dataset.startIndex = "6";
 });
+
+// Класс обработчик действий с сайдбаром
+const sidebarMenu = new Sidebar(loader, bookList, cart);
+sidebarMenu.render();
