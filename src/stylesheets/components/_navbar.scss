@@ -41,3 +41,9 @@
     @include s-btw;
     gap: 40px;
 }
+
+@media (max-width: 1120px) {
+  .navbar__links {
+    display: none;
+  }
+}
