@@ -28,6 +28,7 @@
   "homepage": "https://github.com/thrashches/book_shop_frontend#readme",
   "dependencies": {
     "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
     "node-sass": "^8.0.0",
     "onchange": "^7.1.0",
     "prettier": "^2.8.1",
