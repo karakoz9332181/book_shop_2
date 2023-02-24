@@ -89,9 +89,9 @@ const sliderImg: HTMLImageElement = <HTMLImageElement>(
 );
 
 const sliderItems: Array<sliderItem> = [
-  { id: 1, src: "./img/slider/1.svg" },
-  { id: 2, src: "./img/slider/2.svg" },
-  { id: 3, src: "./img/slider/3.svg" },
+  { id: 1, src: "../../static/img/slider/1.svg" },
+  { id: 2, src: "../../static/img/slider/2.svg" },
+  { id: 3, src: "../../static/img/slider/3.svg" },
 ];
 
 const sliderControls: HTMLElement = <HTMLElement>(
